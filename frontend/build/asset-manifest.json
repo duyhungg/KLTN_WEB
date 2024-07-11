@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.0918b26d.css",
+    "main.js": "/static/js/main.1a4ab6da.js",
+    "static/js/213.b635f976.chunk.js": "/static/js/213.b635f976.chunk.js",
+    "static/js/455.5d277fb5.chunk.js": "/static/js/455.5d277fb5.chunk.js",
+    "static/media/ipad.png": "/static/media/ipad.636a6cc18baa7724d833.png",
+    "static/media/iphone.png": "/static/media/iphone.ee4e06fb9d365c798fb0.png",
+    "static/media/case.png": "/static/media/case.e473887ea57c5ffec516.png",
+    "static/media/airpod.png": "/static/media/airpod.60a015bb01ad62f41519.png",
+    "static/media/macbook.png": "/static/media/macbook.24c78322774440319122.png",
+    "static/media/slick.svg": "/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/index.html",
+    "main.0918b26d.css.map": "/static/css/main.0918b26d.css.map",
+    "main.1a4ab6da.js.map": "/static/js/main.1a4ab6da.js.map",
+    "213.b635f976.chunk.js.map": "/static/js/213.b635f976.chunk.js.map",
+    "455.5d277fb5.chunk.js.map": "/static/js/455.5d277fb5.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0918b26d.css",
+    "static/js/main.1a4ab6da.js"
+  ]
+}
