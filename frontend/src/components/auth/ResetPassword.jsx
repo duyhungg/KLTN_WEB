@@ -8,7 +8,7 @@ import MetaData from "../layout/MetaData";
 const ResetPassword = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-
+  const [otps, setOtps] = useState("");
   const navigate = useNavigate();
   const params = useParams();
 
@@ -37,8 +37,8 @@ const ResetPassword = () => {
     if (password !== confirmPassword) {
       return toast.error("Password does not match. Try again!");
     }
-
-    const data = { password, confirmPassword };
+    const otp = Number(otps);
+    const data = { password, confirmPassword, otp };
 
     resetPassword({ token: params?.token, body: data });
   };
@@ -76,6 +76,19 @@ const ResetPassword = () => {
                 name="confirm_password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="confirm_password_field" className="form-label">
+                OTP
+              </label>
+              <input
+                type="password"
+                id="confirm_password_field"
+                className="form-control"
+                name="confirm_password"
+                value={otps}
+                onChange={(e) => setOtps(e.target.value)}
               />
             </div>
 
