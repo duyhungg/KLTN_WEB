@@ -17,7 +17,10 @@ const Voucher = ({ setVoucher }) => {
   return (
     <>
       <MetaData title={"Voucher"} />
-      <h1>Danh sách voucher</h1>
+      <div>
+        <h1>Danh sách voucher </h1>
+        <span className="text-danger">{`Lưu ý: không áp dụng với thanh toán bằng thẻ`}</span>
+      </div>
       <div className="row">
         {vouchers.map((voucher) => (
           <div

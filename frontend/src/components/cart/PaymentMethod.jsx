@@ -47,8 +47,10 @@ const PaymentMethod = () => {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    const { itemsPrice, shippingPrice, taxPrice, totalPrice } =
-      caluclateOrderCost(cartItems);
+    const { itemsPrice, taxPrice, totalPrice } = caluclateOrderCost(
+      cartItems,
+      shippingInfo?.shipping.price
+    );
 
     if (method === "COD") {
       // Create COD Order
@@ -56,7 +58,7 @@ const PaymentMethod = () => {
         shippingInfo,
         orderItems: cartItems,
         itemsPrice,
-        shippingAmount: shippingPrice,
+        shippingAmount: shippingInfo?.shipping.price,
         taxAmount: taxPrice,
         totalAmount: totalPrice,
         paymentInfo: {
@@ -73,10 +75,9 @@ const PaymentMethod = () => {
         shippingInfo,
         orderItems: cartItems,
         itemsPrice,
-        shippingAmount: shippingPrice,
         taxAmount: taxPrice,
         totalAmount: totalPrice,
-        shippingAmount: 0,
+        shippingAmount: shippingInfo?.shipping.price,
       };
 
       stripeCheckoutSession(orderData);

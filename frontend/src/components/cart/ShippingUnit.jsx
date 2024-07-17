@@ -24,25 +24,29 @@ const ShippingUnit = () => {
   };
 
   const [code, setCode] = useState();
+  const [price, setPrice] = useState();
   const [shippingUnit, setShippingUnit] = useState();
   const [selectedItemId, setSelectedItemId] = useState(null); // State để lưu id của item được chọn
   const [shipping, setShipping] = useState({
     shippingUnit,
     code,
+    price,
   });
 
   const handleClick = (item) => {
     setCode(item.code);
+    setPrice(item.price);
     setShippingUnit(item._id);
-    setSelectedItemId(item._id); // Cập nhật item được chọn
+    setSelectedItemId(item._id);
   };
 
   useEffect(() => {
     setShipping({
       shippingUnit,
       code,
+      price
     });
-  }, [code, shippingUnit]);
+  }, [code, shippingUnit,price]);
 
   return (
     <>

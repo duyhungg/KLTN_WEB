@@ -57,6 +57,14 @@ export const orderApi = createApi({
       },
       invalidatesTags: ["AdminOrders"],
     }),
+    cancelOrder: builder.mutation({
+      query(id) {
+        return {
+          url: `/order/cancel/${id}`,
+          method: "POST",
+        };
+      },
+    }),
   }),
 });
 
@@ -69,4 +77,5 @@ export const {
   useGetAdminOrdersQuery,
   useUpdateOrderMutation,
   useDeleteOrderMutation,
+  useCancelOrderMutation,
 } = orderApi;

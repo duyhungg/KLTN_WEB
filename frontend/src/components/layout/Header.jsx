@@ -88,10 +88,6 @@ const Header = () => {
                 {" "}
                 Profile{" "}
               </Link>
-              <Link className="dropdown-item" to="/me/voucher">
-                {" "}
-                Voucher{" "}
-              </Link>
               <Link
                 className="dropdown-item text-danger"
                 to="/"

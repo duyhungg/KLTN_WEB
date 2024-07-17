@@ -12,9 +12,8 @@ const ConfirmOrder = () => {
   const [voucher, setVoucher] = useState(null);
 
   const { itemsPrice, shippingPrice, taxPrice, totalPrice } =
-    caluclateOrderCost(cartItems);
+    caluclateOrderCost(cartItems, shippingInfo?.shipping.price);
 
-  console.log("voucher", shippingPrice);
 
   return (
     <>
@@ -58,7 +57,7 @@ const ConfirmOrder = () => {
                   <div className="col-4 col-lg-4 mt-4 mt-lg-0">
                     <p>
                       {item?.quantity} x ${item?.price} ={" "}
-                      <b>${(item?.quantity * item.price).toFixed(2)}</b>
+                      <b>${(item?.quantity * item.price).toFixed(3)}</b>
                     </p>
                   </div>
                 </div>

@@ -1,5 +1,8 @@
 import React, { useEffect } from "react";
-import { useMyOrdersQuery } from "../../redux/api/orderApi";
+import {
+  useMyOrdersQuery,
+  useCancelOrderMutation,
+} from "../../redux/api/orderApi";
 import Loader from "../layout/Loader";
 import { toast } from "react-hot-toast";
 import { MDBDataTable } from "mdbreact";
@@ -9,8 +12,8 @@ import { useDispatch } from "react-redux";
 import { clearCart } from "../../redux/features/cartSlice";
 
 const MyOrders = () => {
-  const { data, isLoading, error } = useMyOrdersQuery();
-
+  const { data, isLoading, error, refetch } = useMyOrdersQuery();
+  const [cancelOrder, { isSuccess }] = useCancelOrderMutation();
   const [searchParams] = useSearchParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -21,12 +24,20 @@ const MyOrders = () => {
     if (error) {
       toast.error(error?.data?.message);
     }
-
+    if (isSuccess) {
+      toast.success("Cancel order Success");
+      refetch(); // Refetch orders after successful cancellation
+    }
     if (orderSuccess) {
       dispatch(clearCart());
       navigate("/me/orders");
     }
-  }, [error, orderSuccess]);
+  }, [error, orderSuccess, isSuccess, dispatch, navigate, refetch]);
+
+  const handleCancelOrder = (id) => {
+    cancelOrder(id);
+    console.log("order ", id);
+  };
 
   const setOrders = () => {
     const orders = {
@@ -77,6 +88,14 @@ const MyOrders = () => {
             >
               <i className="fa fa-print"></i>
             </Link>
+            {order?.orderStatus === "NewOrder" && (
+              <button
+                onClick={() => handleCancelOrder(order?._id)}
+                className="btn btn-danger ms-2"
+              >
+                Hủy đơn
+              </button>
+            )}
           </>
         ),
       });
