@@ -95,10 +95,22 @@ export const loginUser = catchAsyncErrors(async (req, res, next) => {
 
 // Logout user   =>  /api/v1/logout
 export const logout = catchAsyncErrors(async (req, res, next) => {
-  // res.cookie('token', null, {
+  res.cookie("token", null, {
+    expires: new Date(Date.now()),
+    httpOnly: true,
+  });
+  // const user = await User.findByIdAndUpdate(req?.user?._id, {
+  //   token: null,
   //   expires: new Date(Date.now()),
-  //   httpOnly: true,
-  // })
+  // });
+
+  // res.clearCookie("token", { httpOnly: true });
+
+  res.status(200).json({
+    message: "Logged Out",
+  });
+});
+export const logoutMobile = catchAsyncErrors(async (req, res, next) => {
   const user = await User.findByIdAndUpdate(req?.user?._id, {
     token: null,
     expires: new Date(Date.now()),
@@ -110,7 +122,6 @@ export const logout = catchAsyncErrors(async (req, res, next) => {
     message: "Logged Out",
   });
 });
-
 // Upload user avatar   =>  /api/v1/me/upload_avatar
 export const uploadAvatar = catchAsyncErrors(async (req, res, next) => {
   const avatarResponse = await upload_file(req.body.avatar, "TLCN/avatars");

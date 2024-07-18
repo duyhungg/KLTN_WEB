@@ -20,6 +20,7 @@ import {
   checkOtpNewEmail,
   updatePoint,
   findUser,
+  logoutMobile,
 } from "../controllers/userControllers.js";
 const router = express.Router();
 
@@ -66,7 +67,7 @@ router
 router.route("/mobile/register").post(registerUser);
 router.route("/mobile/check").post(checkOTP);
 router.route("/mobile/login").post(loginUser);
-router.route("/mobile/logout").get(logout);
+router.route("/mobile/logout").get(logoutMobile);
 
 router.route("/mobile/password/forgot").post(forgotPassword);
 router.route("/mobile/password/reset/:token").put(resetPassword);
