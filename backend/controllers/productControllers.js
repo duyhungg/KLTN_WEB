@@ -237,15 +237,22 @@ export const canUserReview = catchAsyncErrors(async (req, res) => {
     user: req.user._id,
     "orderItems.product": req.query.productId,
   });
+  console.log("order", orders);
 
   if (orders.length === 0) {
     return res.status(200).json({ canReview: false });
+  } else {
+    orders.map((order) => {
+      if (order.orderStatus === "Delivered") {
+        return res.status(200).json({
+          canReview: true,
+        });
+      }
+    });
   }
-
-  res.status(200).json({
-    canReview: true,
-  });
+  
 });
+
 // get Favourite product
 export const getFavouriteProduct = catchAsyncErrors(async (req, res, next) => {
   try {
